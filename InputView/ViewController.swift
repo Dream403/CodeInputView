@@ -15,10 +15,13 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
        
         let inputView = CodeInputView.init(frame: CGRect(x: 0, y: 100, width:UIScreen.main.bounds.width, height: 50));
+        
         inputView.showCursor  = true;
+        inputView.length = 6;
+        
         self.view.addSubview(inputView);
         
-
+        inputView.canBecomeFirstResponder;
     
         
         print("\(inputView.text!)");

@@ -30,6 +30,7 @@ open class CodeInputView: UIView ,UITextFieldDelegate{
     
    @objc   open var codeKeyboardType:UIKeyboardType = UIKeyboardType.numberPad
     
+   /// 默认 4
    @objc   open var length:Int = 4 ;
     
     private  var inputStr:NSString? = ""{
@@ -113,11 +114,6 @@ open class CodeInputView: UIView ,UITextFieldDelegate{
 
 extension CodeInputView{
     
-    open override var canBecomeFirstResponder: Bool{
-        
-        return  true ;
-    }
-
     public func becomeResponder(){
         
         textField.becomeFirstResponder();
@@ -125,9 +121,7 @@ extension CodeInputView{
     open override func draw(_ rect: CGRect) {
         super.draw(rect);
         drawBottomLineWithRect(rect: rect);
-      
         drawCursorWithRect(rect: rect);
-        
         guard self.secureTextEntry else {
             drawTextWithRect(rect: rect);
             return;
@@ -186,7 +180,6 @@ extension CodeInputView{
 // draw
 private extension CodeInputView{
     
-
     func drawTextWithRect(rect:CGRect) {
         
         let Margin  = bottomLineMargin * (CGFloat(length - 1));
@@ -309,7 +302,6 @@ private extension CodeInputView{
 }
 
 //私有方法 初始化
-
  private extension CodeInputView {
     
     func setupSubViews()  {
