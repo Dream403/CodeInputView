@@ -61,7 +61,7 @@ open class CodeInputView: UIView ,UITextFieldDelegate{
     
     @objc open var bottomLineColor: UIColor  = UIColor.black;
     
-    private   lazy var cursor :UIImageView = {
+    private   lazy var cursor :UIImageView = { [unowned self] in
         
       let cursor = UIImageView.init(frame:CGRect(x: 0, y: 0, width: cursorWidth, height: cursorHieght));
         
@@ -89,7 +89,7 @@ open class CodeInputView: UIView ,UITextFieldDelegate{
         textField.delegate  = self;
         
         textField.returnKeyType = UIReturnKeyType.done;
-        textField.backgroundColor = UIColor.red;
+        
         textField.addTarget(self, action:#selector(textChanged), for:.editingChanged);
         
         return textField;
@@ -101,7 +101,7 @@ open class CodeInputView: UIView ,UITextFieldDelegate{
 
         return tap;
         
-    }()
+        }();
     
     public override init(frame: CGRect) {
         super.init(frame: frame);
