@@ -13,25 +13,25 @@ import Foundation
   @objc  optional  func codeInput(_ codeInputView: CodeInputView)
 }
 
-open class CodeInputView: UIView ,UITextFieldDelegate{
+  @IBDesignable open class CodeInputView: UIView ,UITextFieldDelegate{
   
-   @objc   open weak var  delegate: CodeInputViewDelegate?
+  @IBInspectable @objc   open weak var  delegate: CodeInputViewDelegate?
     
    @objc  open  var text:NSString?{
         get{
             return self.inputStr
         }
     }
-    @objc  open var showCursor:Bool =  false {
+   @IBInspectable @objc  open var showCursor:Bool =  false {
         didSet {
             cursor.isHidden = !showCursor;
         }
     }
     
-   @objc   open var codeKeyboardType:UIKeyboardType = UIKeyboardType.numberPad
+ @IBInspectable  @objc   open var codeKeyboardType:UIKeyboardType = UIKeyboardType.numberPad
     
    /// 默认 4
-   @objc   open var length:Int = 4 ;
+ @IBInspectable  @objc   open var length:Int = 4 ;
     
     private  var inputStr:NSString? = ""{
 
@@ -39,27 +39,27 @@ open class CodeInputView: UIView ,UITextFieldDelegate{
             self.setNeedsDisplay();
         }
     }
-    @objc open var cursorHieght: CGFloat = 20;
+ @IBInspectable   @objc open var cursorHieght: CGFloat = 20;
     
-    @objc open var cursorWidth: CGFloat  = 2;
+  @IBInspectable  @objc open var cursorWidth: CGFloat  = 2;
     
-    @objc open var cursorColor: UIColor  = UIColor.black;
+  @IBInspectable  @objc open var cursorColor: UIColor  = UIColor.black;
     
-    @objc open var textColor: UIColor  = UIColor.black;
+  @IBInspectable  @objc open var textColor: UIColor  = UIColor.black;
     
-    @objc open var secureColor: UIColor  = UIColor.black;
+ @IBInspectable   @objc open var secureColor: UIColor  = UIColor.black;
     
-    @objc open var secureTextEntry: Bool  = false;
+ @IBInspectable   @objc open var secureTextEntry: Bool  = false;
     
-    @objc open var font: UIFont  = UIFont.systemFont(ofSize: 14);
+ @IBInspectable   @objc open var font: UIFont  = UIFont.systemFont(ofSize: 14);
     
-    @objc open var bottomSpace: CGFloat  = 10;
+ @IBInspectable   @objc open var bottomSpace: CGFloat  = 10;
     
-    @objc open var bottomLineMargin: CGFloat  = 10;
+ @IBInspectable   @objc open var bottomLineMargin: CGFloat  = 10;
     
-    @objc open var bottomLineHeight: CGFloat  = 2;
+ @IBInspectable   @objc open var bottomLineHeight: CGFloat  = 2;
     
-    @objc open var bottomLineColor: UIColor  = UIColor.black;
+ @IBInspectable   @objc open var bottomLineColor: UIColor  = UIColor.black;
     
     private   lazy var cursor :UIImageView = { [unowned self] in
         
@@ -108,7 +108,9 @@ open class CodeInputView: UIView ,UITextFieldDelegate{
         setupSubViews()
     }
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+//        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder);
+        setupSubViews()
     }
 }
 
